@@ -27,13 +27,13 @@ app.post("/subscribe", async (req, res) => {
   },
     status: "subscribed",
   };
-
+  const jsonData = JSON.stringify(data)
   const authHeader = `Basic ${Buffer.from(`anystring:${apiKey}`).toString(
     "base64"
   )}`;
 
   try {
-    await axios.post(url, data, {
+    await axios.post(url, jsonData, {
       headers: {
         Authorization: authHeader,
       },
